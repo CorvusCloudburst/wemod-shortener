@@ -32,9 +32,9 @@ Let us pretend we are a brand-new startup with a simple mission, providing short
 - Data should be persisted in a relational database.
 - Proper authentication is not required.
 
-## Personal TODO notes.
-- classic html frontend? simple. straightforward. good for proof-of-concept apps that don't need to be fancy.
-- for funsies: make the frontend silly.
+## Useful guides
+- [Laravel Inertia Bootcamp](https://bootcamp.laravel.com/inertia/installation)
+- [Laravel Pizza Tracker Tutorial](https://www.youtube.com/watch?v=hWFP9DeB7KA&t=1637s)
 
 
 <br><br><br>
