@@ -58,7 +58,7 @@ class ShortUrlController extends Controller
     }
 
     /*
-     *  A page in which you can create an individual shortened URL
+     *  A page in which the user can create shortened URLs
      */
     public function create(): Response
     {
@@ -66,7 +66,7 @@ class ShortUrlController extends Controller
     }
 
     /*
-     *  The backend functionality of creating a single URL
+     *  Create a single URL
      */
     public function generate(Request $request)#: RedirectResponse
     {
@@ -79,7 +79,7 @@ class ShortUrlController extends Controller
     }
 
     /*
-     *  The backend functionality of creating many URLs from a CSV
+     *  Create many URLs from a CSV
      */
     public function generateMany(Request $request)#: RedirectResponse
     {

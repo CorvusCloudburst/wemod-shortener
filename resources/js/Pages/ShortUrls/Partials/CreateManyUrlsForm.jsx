@@ -4,11 +4,9 @@ import TextInput from "@/Components/TextInput";
 import { Transition } from "@headlessui/react";
 import { useForm } from "@inertiajs/react";
 
-export default function CreateUrlForm({ className = '' }) {
+export default function CreateManyUrlsForm({ className = '' }) {
 
-    const { data, setData, post, recentlySuccessful } = useForm({
-        longUrl: 'https://example.com/path/my-link',
-    });
+    const { setData, post, recentlySuccessful } = useForm();
 
 const submit = (e) => {
     e.preventDefault();
@@ -19,17 +17,19 @@ const submit = (e) => {
     return (
         <section className={className}>
             <header>
-                <h2 className="text-lg font-medium text-gray-900">Enter your url.</h2>
+                <h2 className="text-lg font-medium text-gray-900">Upload a CSV file.</h2>
+                <p className="mt-1 text-sm text-gray-600">Urls should be comma-separated.</p>
             </header>
 
             <form onSubmit={submit} className="mt-6 space-y-6">
                 <div>
-                    <InputLabel htmlFor="url" value="URL:" />
-                    <TextInput 
-                        id="url" 
-                        className="mt-1 block w-full" 
-                        defaultValue={data.longUrl} 
-                        onChange={(e) => setData('url', e.target.value)}
+                    <InputLabel htmlFor="csv_file" value="CSV File:" />
+                    <input 
+                        id="csv_file"
+                        type="file"
+                        name="csv_file"
+                        accept=".csv"
+                        onChange={(e) => setData('csv_file', e.target.files[0])}
                     />
                 </div>
                 <div className="flex items-center gap-4">
@@ -41,7 +41,7 @@ const submit = (e) => {
                         leave="transition ease-in-out"
                         leaveTo="opacity-0"
                     >
-                        <p className="text-sm text-gray-600">URL Saved. One moment please...</p>
+                        <p className="text-sm text-gray-600">File Saved. One moment please...</p>
                     </Transition>
                 </div>
             </form>
