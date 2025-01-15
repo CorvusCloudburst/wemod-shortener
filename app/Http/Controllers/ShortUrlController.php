@@ -15,7 +15,7 @@ class ShortUrlController extends Controller
     /*
      *  The rerouting route (say that ten times fast)
      */
-    public function go()
+    public function go(): RedirectResponse
     {
         $shortUrlPath = request('shortUrlPath');
         $shortUrl = ShortUrl::where('short_url_path', $shortUrlPath)->firstOrFail();
@@ -44,7 +44,7 @@ class ShortUrlController extends Controller
     /*
      *  The details/analytics page of a particular URL
      */
-    public function analytics()
+    public function analytics(): Response
     {
         $shortUrlPath = request('shortUrlPath');
 
@@ -58,7 +58,7 @@ class ShortUrlController extends Controller
     }
 
     /*
-     *  The page in which you create a shortened URL
+     *  A page in which you can create an individual shortened URL
      */
     public function create(): Response
     {
@@ -66,11 +66,51 @@ class ShortUrlController extends Controller
     }
 
     /*
-     *  The backend functionality of creating a URL
+     *  The backend functionality of creating a single URL
      */
-    public function generate(Request $request): RedirectResponse
+    public function generate(Request $request)#: RedirectResponse
     {
-        $shortUrl = new ShortUrl;
+        if ($request->csv_file) {
+            $this->generateMany($request);
+        } else {
+            $shortUrlPath = $this->generateNewUrl($request->longUrl);
+            return redirect('/go/' . $shortUrlPath . '/analytics');
+        }
+    }
+
+    /*
+     *  The backend functionality of creating many URLs from a CSV
+     */
+    public function generateMany(Request $request)#: RedirectResponse
+    {
+
+        return response('meep!');
+
+        $request->validate([
+            'csv_file' => 'required|mimes:csv,txt|max:2048',
+        ]);
+
+        if ($request->hasFile('csv_file')) {
+            $file = $request->file('csv_file');
+            $filePath = $file->getPathName();
+            $csvData = str_getcsv(file($filePath)[0], ",", "'", "\\");
+
+            return response($csvData);
+
+            foreach ($csvData as $originalUrl) {
+                $this->generateNewUrl($originalUrl);
+            }
+        }
+        return redirect('/urls');
+    }
+
+    /*
+     * Saves a URL to the DB and and returns the short url path
+     * Could probably be better placed in a service layer but eh.
+     */
+    private function generateNewUrl($longUrl): string
+    {
+        // Generate a random set of leters
         $shortUrlPath = substr(md5(microtime()), rand(0,26), 5);
 
         // Ensures a unique path
@@ -82,13 +122,15 @@ class ShortUrlController extends Controller
             }
         }
 
+        // Save to the DB
+        $shortUrl = new ShortUrl;
         $shortUrl->short_url_path = $shortUrlPath;
-        $shortUrl->original_url = $request->longUrl;
+        $shortUrl->original_url = $longUrl;
         $shortUrl->user_id = Auth::user()->id;
 
         $shortUrl->save();
 
-        return redirect('/go/' . $shortUrlPath . '/analytics');
+        return $shortUrlPath;
     }
 
 }
