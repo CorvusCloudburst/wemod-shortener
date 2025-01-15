@@ -16,6 +16,26 @@ composer run dev
 
 ## Data Model
 
+The Users / authentication tables were auto-generated using Laravel Breeze so I won't bother to list them here.
+
+### ShortUrls
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| id   | integer | auto-incremented primary key |
+| user | foreign id | the creator of the link |
+| original_url | string | the url to redirect to |
+| short_url_path | string | the path that will redirect to the original_url |
+| created_at | timestamp | auto-generated timestamp |
+| updated_at | timestamp | auto-generated timestamp |
+
+### UrlVisits
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| id   | integer | auto-incremented primary key |
+| short_url_id | foreign id | the url being visited |
+| created_at | timestamp | auto-generated timestamp--useful for capturing visit time |
+| updated_at | timestamp | auto-generated timestamp |
+
 ## Useful Guides
 - [Laravel Inertia Bootcamp](https://bootcamp.laravel.com/inertia/installation)
 - [Laravel Pizza Tracker Tutorial](https://www.youtube.com/watch?v=hWFP9DeB7KA&t=1637s)
