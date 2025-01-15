@@ -71,7 +71,7 @@ class ShortUrlController extends Controller
     public function generate(Request $request)#: RedirectResponse
     {
         if ($request->csv_file) {
-            $this->generateMany($request);
+            return $this->generateMany($request);
         } else {
             $shortUrlPath = $this->generateNewUrl($request->longUrl);
             return redirect('/go/' . $shortUrlPath . '/analytics');
@@ -83,9 +83,6 @@ class ShortUrlController extends Controller
      */
     public function generateMany(Request $request)#: RedirectResponse
     {
-
-        return response('meep!');
-
         $request->validate([
             'csv_file' => 'required|mimes:csv,txt|max:2048',
         ]);
@@ -94,8 +91,6 @@ class ShortUrlController extends Controller
             $file = $request->file('csv_file');
             $filePath = $file->getPathName();
             $csvData = str_getcsv(file($filePath)[0], ",", "'", "\\");
-
-            return response($csvData);
 
             foreach ($csvData as $originalUrl) {
                 $this->generateNewUrl($originalUrl);
