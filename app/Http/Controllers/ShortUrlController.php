@@ -68,7 +68,7 @@ class ShortUrlController extends Controller
     /*
      *  Create a single URL
      */
-    public function generate(Request $request)#: RedirectResponse
+    public function generate(Request $request): RedirectResponse
     {
         if ($request->csv_file) {
             return $this->generateMany($request);
@@ -81,7 +81,7 @@ class ShortUrlController extends Controller
     /*
      *  Create many URLs from a CSV
      */
-    public function generateMany(Request $request)#: RedirectResponse
+    public function generateMany(Request $request): RedirectResponse
     {
         $request->validate([
             'csv_file' => 'required|mimes:csv,txt|max:2048',
