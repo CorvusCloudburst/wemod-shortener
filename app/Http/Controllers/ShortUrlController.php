@@ -13,21 +13,6 @@ use Inertia\Response;
 
 class ShortUrlController extends Controller
 {
-
-    /*
-     *  Homepage
-     */
-    public function homepage(): Response
-    {
-        $urls = ShortUrl::all();
-
-        return Inertia::render('Homepage', [
-            'canLogin' => Route::has('login'),
-            'canRegister' => Route::has('register'),
-            'urls' => $urls
-        ]);
-    }
-
     /*
      *  The rerouting route (say that ten times fast)
      */
@@ -44,13 +29,27 @@ class ShortUrlController extends Controller
 
         return redirect($shortUrl->original_url);
     }
+
+    /*
+     *  Homepage
+     */
+    public function homepage(): Response
+    {
+        $urls = ShortUrl::all();
+
+        return Inertia::render('Homepage', [
+            'canLogin' => Route::has('login'),
+            'canRegister' => Route::has('register'),
+            'urls' => $urls
+        ]);
+    }
     
     /*
      *  See all shortened URLs
      */
     public function index(): Response
     {
-        $urls = ShortUrl::all();
+        $urls = ShortUrl::where('user_id', Auth::id())->get();
 
         return Inertia::render('ShortUrls/MyUrls', [
             'urls' => $urls
@@ -117,7 +116,7 @@ class ShortUrlController extends Controller
 
     /*
      * Saves a URL to the DB and and returns the short url path
-     * Could probably be better placed in a service layer but eh.
+     * Could probably be better placed in a service layer but... eh.
      */
     private function generateNewUrl($longUrl): string
     {
