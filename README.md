@@ -14,6 +14,16 @@ In the root directory of this project, run:
 composer run dev
 ```
 
+## Endpoints
+
+### Pages
+
+// TODO
+
+### API
+
+// TODO
+
 ## Data Model
 
 The Users / authentication tables were auto-generated using Laravel Breeze so I won't bother to list them here.
