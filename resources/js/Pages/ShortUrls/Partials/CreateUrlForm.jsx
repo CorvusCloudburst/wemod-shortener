@@ -19,7 +19,7 @@ const submit = (e) => {
     return (
         <section className={className}>
             <header>
-                <h2 className="text-lg font-medium text-gray-900">Enter your url.</h2>
+                <h2 className="text-lg font-medium text-gray-400">Enter your url.</h2>
             </header>
 
             <form onSubmit={submit} className="mt-6 space-y-6">
@@ -27,7 +27,7 @@ const submit = (e) => {
                     <InputLabel htmlFor="url" value="URL:" />
                     <TextInput 
                         id="url" 
-                        className="mt-1 block w-full" 
+                        className="mt-1 block w-full bg-gray-950 text-gray-300 border-gray-700" 
                         defaultValue={data.longUrl} 
                         onChange={(e) => setData('url', e.target.value)}
                     />

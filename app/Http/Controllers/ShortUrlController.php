@@ -6,12 +6,28 @@ use App\Models\ShortUrl;
 use App\Models\UrlVisit;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Inertia\Response;
 
 class ShortUrlController extends Controller
 {
+
+    /*
+     *  Homepage
+     */
+    public function homepage(): Response
+    {
+        $urls = ShortUrl::all();
+
+        return Inertia::render('Homepage', [
+            'canLogin' => Route::has('login'),
+            'canRegister' => Route::has('register'),
+            'urls' => $urls
+        ]);
+    }
+
     /*
      *  The rerouting route (say that ten times fast)
      */
@@ -36,7 +52,7 @@ class ShortUrlController extends Controller
     {
         $urls = ShortUrl::all();
 
-        return Inertia::render('ShortUrls/All', [
+        return Inertia::render('ShortUrls/MyUrls', [
             'urls' => $urls
         ]);
     }
