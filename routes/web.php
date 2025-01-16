@@ -2,32 +2,19 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ShortUrlController;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
-
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/', [ShortUrlController::class, 'homepage'])->name('shortUrls.homepage');
 
 Route::middleware('auth')->group(function () {
     # URL Redirect Functionality
     Route::get('/go/{shortUrlPath}', [ShortUrlController::class, 'go'])->name('shortUrls.go');
-    Route::get('/go/{shortUrlPath}/analytics', [ShortUrlController::class, 'analytics'])->name('shortUrls.analytics');
 
     # URL Management endpoints
     Route::get('/urls', [ShortUrlController::class, 'index'])->name('shortUrls.index');
     Route::post('/urls', [ShortUrlController::class, 'generate'])->name('shortUrls.generate');
     Route::get('/urls/new', [ShortUrlController::class, 'create'])->name('shortUrls.create');
+    Route::get('/urls/{shortUrlPath}', [ShortUrlController::class, 'analytics'])->name('shortUrls.analytics');
 
     # Premade User routes from Breeze
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

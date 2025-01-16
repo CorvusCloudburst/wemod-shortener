@@ -1,5 +1,5 @@
 import Table from "@/Components/Table";
-import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
+import NavLayout from "@/Layouts/NavLayout";
 import { Head } from "@inertiajs/react";
 
 const columns = [
@@ -10,17 +10,14 @@ const columns = [
 export default function Analytics({ auth, shortUrl, visits }) {
 
     return (
-        <AuthenticatedLayout
-            header={
-                <h2 className="text-xl font-semibold leading-tight text-gray-800">
-                    Url Visits
-                </h2>
-            }
-        >
+        <NavLayout>
             <Head title="Url Visits" />
+            <h2 className="text-2xl font-semibold leading-tight text-gray-400 text-center">
+                Url Visits
+            </h2>
 
-            <div className="mx-auto max-w-7xl sm:px-6 lg:px-8 m-8">
-                <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg p-8 space-y-4 text-lg">
+            <div className="mx-auto max-w-7xl sm:px-6 lg:px-8 m-8 text-gray-500">
+                <div className="overflow-hidden bg-gray-900 shadow-sm sm:rounded-lg p-8 space-y-4 text-lg">
                     <h3 className="text-3xl font-bold">Summary</h3>
                     {/* Shortened URL: */}
                     <div className="flex space-x-4 items-center">
@@ -41,10 +38,8 @@ export default function Analytics({ auth, shortUrl, visits }) {
             </div>
 
             <div className="mx-auto max-w-7xl sm:px-6 lg:px-8 m-8">
-                <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg p-8">
-                    <Table items={visits} columns={columns} primary="Visit ID" />
-                </div>
+                <Table items={visits} columns={columns} primary="Visit ID" />
             </div>
-        </AuthenticatedLayout>
+        </NavLayout>
     );
 }

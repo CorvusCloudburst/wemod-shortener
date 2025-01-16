@@ -17,14 +17,15 @@ const submit = (e) => {
     return (
         <section className={className}>
             <header>
-                <h2 className="text-lg font-medium text-gray-900">Upload a CSV file.</h2>
+                <h2 className="text-lg font-medium text-gray-400">Upload a CSV file.</h2>
                 <p className="mt-1 text-sm text-gray-600">Urls should be comma-separated.</p>
             </header>
 
             <form onSubmit={submit} className="mt-6 space-y-6">
                 <div>
-                    <InputLabel htmlFor="csv_file" value="CSV File:" />
+                    <InputLabel htmlFor="csv_file" value="CSV File:" className="mb-2 text-gray-500" />
                     <input 
+                        className="text-gray-600"
                         id="csv_file"
                         type="file"
                         name="csv_file"

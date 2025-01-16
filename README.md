@@ -14,6 +14,14 @@ In the root directory of this project, run:
 composer run dev
 ```
 
+There is an example account already set up and seeded for you to explore. The credentials are:
+
+**Email:** `meep@moop.mop`
+
+**Password:** `password`
+
+You may also create your own new account!
+
 ## Endpoints
 
 ### Pages

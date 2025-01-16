@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Models\ShortUrl;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,7 +17,7 @@ class UrlVisitFactory extends Factory
     public function definition(): array
     {
         return [
-            'short_url_id' => rand(1, 35),
+            'short_url_id' => rand(1, 48),
             'ip' => rand(100, 199) . '.' . rand(10, 99) . '.' . rand(10, 99) . '.' . rand(100, 200),
         ];
     }

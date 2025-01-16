@@ -6,6 +6,7 @@ use App\Models\ShortUrl;
 use App\Models\UrlVisit;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -28,15 +29,29 @@ class ShortUrlController extends Controller
 
         return redirect($shortUrl->original_url);
     }
+
+    /*
+     *  Homepage
+     */
+    public function homepage(): Response
+    {
+        $urls = ShortUrl::all();
+
+        return Inertia::render('Homepage', [
+            'canLogin' => Route::has('login'),
+            'canRegister' => Route::has('register'),
+            'urls' => $urls
+        ]);
+    }
     
     /*
      *  See all shortened URLs
      */
     public function index(): Response
     {
-        $urls = ShortUrl::all();
+        $urls = ShortUrl::where('user_id', Auth::id())->get();
 
-        return Inertia::render('ShortUrls/All', [
+        return Inertia::render('ShortUrls/MyUrls', [
             'urls' => $urls
         ]);
     }
@@ -74,7 +89,7 @@ class ShortUrlController extends Controller
             return $this->generateMany($request);
         } else {
             $shortUrlPath = $this->generateNewUrl($request->longUrl);
-            return redirect('/go/' . $shortUrlPath . '/analytics');
+            return redirect('/urls/' . $shortUrlPath);
         }
     }
 
@@ -101,7 +116,7 @@ class ShortUrlController extends Controller
 
     /*
      * Saves a URL to the DB and and returns the short url path
-     * Could probably be better placed in a service layer but eh.
+     * Could probably be better placed in a service layer but... eh.
      */
     private function generateNewUrl($longUrl): string
     {
