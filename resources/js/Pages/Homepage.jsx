@@ -3,7 +3,7 @@ import NavLayout from '@/Layouts/NavLayout';
 import { Head } from '@inertiajs/react';
 
 const columns = [
-    'short_url_path',
+    'shortlink',
     'original_url',
     'owner',
     'visits',

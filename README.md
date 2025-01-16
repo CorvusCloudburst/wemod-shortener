@@ -1,5 +1,5 @@
 # wemod-shortener
-URL Shortener for WeMod
+URL Shortener for WeMod.
 
 <br>
 

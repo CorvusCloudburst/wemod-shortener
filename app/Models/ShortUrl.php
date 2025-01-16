@@ -20,6 +20,7 @@ class ShortUrl extends Model
     protected $appends = [
         'owner',
         'visits',
+        'shortlink',
     ];
 
     public function user(): BelongsTo
@@ -40,5 +41,10 @@ class ShortUrl extends Model
     public function getVisitsAttribute()
     {
         return $this->urlVisits->count();
+    }
+
+    public function getShortlinkAttribute()
+    {
+        return route('shortUrls.go', $this->short_url_path);
     }
 }
