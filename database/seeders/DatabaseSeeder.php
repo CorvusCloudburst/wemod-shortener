@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
         ShortUrl::factory(35)->create();
         User::factory(1, [
             'id' => 888,
-            'name' => 'Hiyre Mei',
+            'name' => 'Hi Future Coworker!',
             'email' => 'meep@moop.mop',
             'email_verified_at' => now(),
             'password' => Hash::make('password'),
