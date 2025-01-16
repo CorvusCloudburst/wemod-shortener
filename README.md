@@ -1,4 +1,5 @@
-# wemod-shortener
+
+# <img src="./public/cloudburstLogo.png" width="20px" /> wemod-shortener
 URL Shortener for WeMod.
 
 <br>
