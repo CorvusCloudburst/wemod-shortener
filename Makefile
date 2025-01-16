@@ -13,7 +13,7 @@ init:
 	# $(INFO) Initializing... $(END)
 	git pull
 	composer install
-	php artisan migrate
+	php artisan migrate:fresh --seed
 
 clean:
 	# $(WARN) "make clean" does aggressive clean up $(END)
