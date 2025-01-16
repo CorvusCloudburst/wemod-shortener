@@ -18,5 +18,6 @@ init:
 clean:
 	# $(WARN) "make clean" does aggressive clean up $(END)
 	rm -rf vendor
+	rm -rf node_modules
 
 fresh: clean init
