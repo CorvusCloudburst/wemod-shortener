@@ -19,7 +19,7 @@ class ShortUrlFactory extends Factory
     {
         return [
             'user_id' => rand(1, 10),
-            'original_url' => array_rand([
+            'original_url' => Arr::random([
                 'https://corvus.rip', 'https://corvus.rip', 'https://corvus.rip', 'https://corvus.rip', 'https://corvus.rip',
                 'https://cloudburst.ink/art/ride-or-die',
                 'https://cloudburst.ink/art/men-like-us',
