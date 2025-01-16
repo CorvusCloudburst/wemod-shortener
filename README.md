@@ -94,7 +94,7 @@ The Users / authentication tables were auto-generated using Laravel Breeze so I 
 <br><br>
 
 
-## givenRequirements
+## Given Requirements
 
 **Backend Take Home Challenge**
 
