@@ -1,11 +1,33 @@
 # wemod-shortener
 URL Shortener for WeMod
 
+<br>
+
 ## Getting Started
+
+Clone this repository from github by calling either of the below options:
+
+```
+git clone git@github.com:CorvusCloudburst/wemod-shortener.git
+``` 
+```
+git clone https://github.com/CorvusCloudburst/wemod-shortener.git
+```
+
+Then `cd` into the newly created `wemod-shortener` folder.
 
 ### Setting up your environment
 
-// TODO
+Run:
+```
+make init
+```
+
+This should hopefully handle most of the setup. I tested it on two Macs and a Debian 12. If your conditions vary too greatly from that then congratulations, you're now my honorary QA team. In a kinder world I would have used Docker, but alas, life is a cruel mistress and I did not.
+
+This application requires PHP 8.4 and [composer](https://getcomposer.org/). If you do not have these, you may be directed to install them before retrying `make init`.
+
+If you're hitting errors while getting set up, I recommend stepping through steps listed in the `init` flow of the [Makefile](./Makefile).
 
 ### Running the application locally
 
@@ -13,6 +35,8 @@ In the root directory of this project, run:
 ```
 composer run dev
 ```
+
+The application should now be accessible at http://localhost:8000.
 
 There is an example account already set up and seeded for you to explore. The credentials are:
 
@@ -22,15 +46,19 @@ There is an example account already set up and seeded for you to explore. The cr
 
 You may also create your own new account!
 
-## Endpoints
+<br>
 
-### Pages
+## Navigating the Repository
 
-// TODO
+A great starting point for getting oriented is [web.php](./routes/web.php). This file contains all of the relevant API and Page routes.
 
-### API
+From there, I recommend taking a look at [ShortUrlController.php](./app/Http/Controllers/ShortUrlController.php). This is where all of the non-boilerplate routing calls are handled.
 
-// TODO
+Frontend routes use Inertia as a middleman for the React frontend. The relevant React components can be found in [the pages folder](./resources/js/Pages/Homepage.jsx).
+
+Everything related to authentication is boilerplate provided by Laravel Breeze. I assumed that "authentication not required" meant it was "not required but allowed." I found it easier to just leave the boilerplate authentication in place and make use of it rather than remove it.
+
+<br>
 
 ## Data Model
 
@@ -42,23 +70,31 @@ The Users / authentication tables were auto-generated using Laravel Breeze so I 
 | id   | integer | auto-incremented primary key |
 | user | foreign id | the creator of the link |
 | original_url | string | the url to redirect to |
-| short_url_path | string | the path that will redirect to the original_url |
+| short_url_path | string | the short path that will redirect to the original_url* |
 | created_at | timestamp | auto-generated timestamp |
 | updated_at | timestamp | auto-generated timestamp |
+
+\* *I found it more graceful in this column to only store the short 5-digit path, rather than the entire url. This way, a domain change will not require a massive database migration, and the values themselves will be a bit smaller.*
 
 ### UrlVisits
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | id   | integer | auto-incremented primary key |
 | short_url_id | foreign id | the url being visited |
+| ip | string | The IP address of the visitor |
 | created_at | timestamp | auto-generated timestamp--useful for capturing visit time |
 | updated_at | timestamp | auto-generated timestamp |
+
+<br>
 
 ## Useful Guides
 - [Laravel Inertia Bootcamp](https://bootcamp.laravel.com/inertia/installation)
 - [Laravel Pizza Tracker Tutorial](https://www.youtube.com/watch?v=hWFP9DeB7KA&t=1637s)
 
-## Take Home Requirements
+<br><br>
+
+
+## Take-Home Requirements
 
 **Backend Take Home Challenge**
 
@@ -82,7 +118,8 @@ Let us pretend we are a brand-new startup with a simple mission, providing short
 - Proper authentication is not required.
 
 
-<br><br><br>
+<br><br><br><br><br>
+<br><br><br><br><br>
 
 ---
 

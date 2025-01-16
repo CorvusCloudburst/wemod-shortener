@@ -37,8 +37,8 @@ dependencies:
 
 versions:
 	# $(INFO) Checking versions... $(END)
-	@if php -v | grep "v8.4.\d"; then echo "$(OK) PHP 8.4 is installed $(END)"; else echo "$(WARN) Run 'make php-install' $(END)"; exit 1; fi
-	@if composer -V > /dev/null; then echo "$(OK) Composer is installed! $(END)"; else echo "$(WARN) run 'brew install composer' $(END)"; exit 1; fi
+	@if php -v | grep "v8.4.\d"; then echo "$(OK) PHP 8.4 is installed $(END)"; else echo "$(WARN) Please install PHP 8.4. If you have homebrew, run 'make php-install'. $(END)"; exit 1; fi
+	@if composer -V > /dev/null; then echo "$(OK) Composer is installed! $(END)"; else echo "$(WARN) Please install composer. If you have homebrew, run 'brew install composer'. $(END)"; exit 1; fi
 
 php-uninstall:
 	# $(INFO) Uninstalling PHP... $(END)
@@ -47,5 +47,6 @@ php-uninstall:
 
 php-install:
 	# $(INFO) Installing PHP... $(END)
+	# $(INFO) THIS MAY TAKE AWHILE $(END)
 	sh ./bin/php-install.sh
-	@if composer check-platform-reqs | grep "failed"; then echo "$(WARN) run 'brew install php' $(END)"; exit 1; else echo "$(OK) PHP is good! $(END)"; fi
+	@if composer check-platform-reqs | grep "failed"; then echo "$(WARN) run 'brew install php' $(END)"; exit 1; else echo "$(OK) PHP is good! You may now call make init. $(END)"; fi
