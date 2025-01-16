@@ -1,5 +1,5 @@
 
-# <img src="./public/cloudburstLogo.png" width="20px" /> wemod-shortener
+# <a href="https://corvus.rip"><img src="./public/cloudburstLogo.png" width="20px" /></a> wemod-shortener
 URL Shortener for WeMod.
 
 <br>
