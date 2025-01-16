@@ -28,7 +28,7 @@ This should hopefully handle most of the setup. I tested it on two Macs and a De
 
 This application requires PHP 8.4 and [composer](https://getcomposer.org/). If you do not have these, you may be directed to install them before retrying `make init`.
 
-If you're hitting errors while getting set up, I recommend stepping through steps listed in the `init` flow of the [Makefile](./Makefile).
+If you're hitting errors while getting set up, I recommend stepping through the commands performed by the `init` flow of the [Makefile](./Makefile).
 
 ### Running the application locally
 
