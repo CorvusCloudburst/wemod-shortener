@@ -49,7 +49,19 @@ There is a [sample csv](./tests/sample.csv) provided as well.
 
 <br>
 
-## Navigating the Repository
+## Navigating the website
+
+The [All Urls](./resources/js/Pages/Homepage.jsx) page is the homepage. This page lists all of the URLs in the database. This is the only page that does not require a login. In a larger project, this would probably need to be paginated. In this assignment, I didn't bother.
+
+The [My Urls](./resources/js/Pages/ShortUrls/MyUrls.jsx) page lists all of the URLs created by the logged-in user. Again, in an enterprise-scale project, this should probably be paginated.
+
+The [+ New Url](./resources/js/Pages/ShortUrls/Create.jsx) page allows a logged-in user to generate shortened URLs--either by pasting in a single URL, or uploading a comma-separated csv file. This form likely requires more stringent validation.
+
+Each URL displayed on the [My Urls](./resources/js/Pages/ShortUrls/MyUrls.jsx) page has an [Analytics](./resources/js/Pages/ShortUrls/Analytics.jsx) link that will display very rudimentary analytics. This display could be improved upon by using a pre-existing url library--some of which include analytics already--or just by adding more features. The Analytics page should probably be restricted to the owning user, however I did not take the time to implement that.
+
+<br>
+
+## Navigating the repository
 
 A great starting point for getting oriented is [web.php](./routes/web.php). This file contains all of the relevant API and Page routes.
 
