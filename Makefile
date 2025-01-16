@@ -37,7 +37,7 @@ dependencies:
 
 versions:
 	# $(INFO) Checking versions... $(END)
-	@if php -v | grep "v8.4.\d"; then echo "$(OK) PHP 8.4 is installed $(END)"; else echo "$(WARN) Please install PHP 8.4. If you have homebrew, run 'make php-install'. $(END)"; exit 1; fi
+	@if php -v | grep "8.4"; then echo "$(OK) PHP 8.4 is installed! $(END)"; else echo "$(WARN) Please install PHP 8.4. If you have homebrew, run 'make php-install'. $(END)"; exit 1; fi
 	@if composer -V > /dev/null; then echo "$(OK) Composer is installed! $(END)"; else echo "$(WARN) Please install composer. If you have homebrew, run 'brew install composer'. $(END)"; exit 1; fi
 
 php-uninstall:
