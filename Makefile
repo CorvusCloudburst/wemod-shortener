@@ -19,6 +19,7 @@ init:
 	composer run post-root-package-install
 	composer run post-create-project-cmd
 	composer run post-update-cmd
+	nvm use
 	npm install
 	npm run build
 	php artisan migrate:fresh --seed
