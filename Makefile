@@ -12,6 +12,7 @@ default: fresh
 init:
 	# $(INFO) Initializing... $(END)
 	git pull
+	git clone http://github.com/creationix/nvm.git .nvm
 	@make versions
 	composer install
 	composer run post-autoload-dump
