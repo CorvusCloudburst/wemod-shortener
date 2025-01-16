@@ -7,7 +7,7 @@ import { useForm } from "@inertiajs/react";
 export default function CreateUrlForm({ className = '' }) {
 
     const { data, setData, post, recentlySuccessful } = useForm({
-        longUrl: 'https://example.com/path/my-link',
+        longUrl: 'https://corvus.rip/',
     });
 
 const submit = (e) => {
@@ -28,8 +28,8 @@ const submit = (e) => {
                     <TextInput 
                         id="url" 
                         className="mt-1 block w-full bg-gray-950 text-gray-300 border-gray-700" 
-                        defaultValue={data.longUrl} 
-                        onChange={(e) => setData('url', e.target.value)}
+                        placeholder={data.longUrl} 
+                        onChange={(e) => setData('longUrl', e.target.value)}
                     />
                 </div>
                 <div className="flex items-center gap-4">

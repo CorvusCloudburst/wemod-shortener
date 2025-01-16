@@ -14,7 +14,7 @@ export default function Create({ auth }) {
             <div className="max-w-7xl mx-auto sm:p-6 lg:p-8 space-y-6">
                 <div className="p-4 mx-auto sm:p-8 bg-gray-900/[0.4] shadow sm:rounded-lg space-y-8 flex flex-col items-center">
                     <CreateManyUrlsForm className="w-1/2" />
-                    <p className="text-xl font-bold text-gray-600">OR</p>
+                    <p className="text-xl font-bold text-gray-600">------------- OR -------------</p>
                     <CreateUrlForm className="w-1/2" />
                 </div>
             </div>

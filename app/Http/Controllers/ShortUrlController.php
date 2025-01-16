@@ -105,7 +105,7 @@ class ShortUrlController extends Controller
         if ($request->hasFile('csv_file')) {
             $file = $request->file('csv_file');
             $filePath = $file->getPathName();
-            $csvData = str_getcsv(file($filePath)[0], ",", "'", "\\");
+            $csvData = str_getcsv(file($filePath)[0], ",", "'", "");
 
             foreach ($csvData as $originalUrl) {
                 $this->generateNewUrl($originalUrl);
