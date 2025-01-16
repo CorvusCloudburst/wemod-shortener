@@ -7,6 +7,8 @@ use App\Models\UrlVisit;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -17,6 +19,17 @@ class DatabaseSeeder extends Seeder
     {
         User::factory(10)->create();
         ShortUrl::factory(35)->create();
-        UrlVisit::factory(100)->create();
+        User::factory(1, [
+            'id' => 888,
+            'name' => 'Hiyre Mei',
+            'email' => 'meep@moop.mop',
+            'email_verified_at' => now(),
+            'password' => Hash::make('password'),
+            'remember_token' => Str::random(10),
+        ])->create();
+        ShortUrl::factory(13, [
+            'user_id' => 888,
+        ])->create();
+        UrlVisit::factory(300)->create();
     }
 }

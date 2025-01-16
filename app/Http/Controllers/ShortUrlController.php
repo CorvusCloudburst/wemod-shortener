@@ -89,7 +89,7 @@ class ShortUrlController extends Controller
             return $this->generateMany($request);
         } else {
             $shortUrlPath = $this->generateNewUrl($request->longUrl);
-            return redirect('/go/' . $shortUrlPath . '/analytics');
+            return redirect('/urls/' . $shortUrlPath);
         }
     }
 
