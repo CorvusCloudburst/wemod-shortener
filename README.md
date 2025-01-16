@@ -102,7 +102,7 @@ The Users / authentication tables were auto-generated using Laravel Breeze so I 
 
 ## Useful Guides
 - [Laravel Inertia Bootcamp](https://bootcamp.laravel.com/inertia/installation)
-- [Laravel Pizza Tracker Tutorial](https://www.youtube.com/watch?v=hWFP9DeB7KA&t=1637s)
+- [Laravel Pizza Tracker Tutorial](https://www.youtube.com/watch?v=hWFP9DeB7KA)
 
 <br><br>
 
