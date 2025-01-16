@@ -38,13 +38,13 @@ composer run dev
 
 The application should now be accessible at http://localhost:8000.
 
-There is an example account already set up and seeded for you to explore. The credentials are:
+Feel free to make a new account if you wish! However, there is an example account already set up and seeded for you to explore. The credentials are:
 
 **Email:** `meep@moop.mop`
 
 **Password:** `password`
 
-You may also create your own new account!
+There is a [sample csv](./tests/sample.csv) provided as well.
 
 <br>
 
@@ -94,7 +94,7 @@ The Users / authentication tables were auto-generated using Laravel Breeze so I 
 <br><br>
 
 
-## Take-Home Requirements
+## givenRequirements
 
 **Backend Take Home Challenge**
 
