@@ -19,7 +19,7 @@ class ShortUrlFactory extends Factory
     {
         return [
             'user_id' => rand(1, 10),
-            'original_url' => [
+            'original_url' => array_rand([
                 'https://corvus.rip', 'https://corvus.rip', 'https://corvus.rip', 'https://corvus.rip', 'https://corvus.rip',
                 'https://cloudburst.ink/art/ride-or-die',
                 'https://cloudburst.ink/art/men-like-us',
@@ -28,7 +28,7 @@ class ShortUrlFactory extends Factory
                 'https://cloudburst.ink/art/ever-after',
                 'https://cloudburst.ink/art/lux-mea',
                 'https://cloudburst.ink/art/if-i-am-doomed',
-            ],
+            ]),
             'short_url_path' => substr(md5(microtime()),rand(0,26), 5)
         ];
     }
